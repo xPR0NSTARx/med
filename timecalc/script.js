@@ -18,6 +18,10 @@ var op = function(sign){
 		iSec.value = "0";
 	iSec.value = ("0" + iSec.value).slice(-2);
 
+	//ignore comment
+	if(sSec.innerHTML.charAt(0) == '<')
+		sSec.innerHTML = "00";
+
 	var iMinI = parseInt(iMin.value);
 	var iSecI = parseInt(iSec.value);
 	var sMinI = parseInt(sMin.innerHTML);
