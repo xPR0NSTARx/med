@@ -18,25 +18,21 @@ var op = function(sign){
 		iSec.value = "0";
 	iSec.value = ("0" + iSec.value).slice(-2);
 
-	//ignore comment
-	if(sSec.innerHTML.charAt(0) == '<')
-		sSec.innerHTML = "00";
-
 	var iMinI = parseInt(iMin.value);
 	var iSecI = parseInt(iSec.value);
-	var sMinI = parseInt(sMin.innerHTML);
-	var sSecI = parseInt(sSec.innerHTML);
-	
+	var sMinI = parseInt(sMin.textContent);
+	var sSecI = parseInt(sSec.textContent);
+    
 	var iSecs = iMinI * 60 + iSecI;
-	var sSecs = sMinI * 60 + sSecI * (sMin.innerHTML.charAt(0) == '-' ? -1 : 1);
+	var sSecs = sMinI * 60 + sSecI * (sMin.textContent.charAt(0) == '-' ? -1 : 1);
 	
 	sSecs += iSecs * sign;
 
 	sMinI = sSecs > 0 ? Math.floor(sSecs / 60) : Math.ceil(sSecs / 60);
 	sSecI = Math.abs(sSecs) % 60;
 	
-	sMin.innerHTML = sMinI == 0 && sSecs < 0 ? "-0" : sMinI;
-	sSec.innerHTML = ("0" + sSecI).slice(-2);
+	sMin.textContent = sMinI == 0 && sSecs < 0 ? "-0" : sMinI;
+	sSec.textContent = ("0" + sSecI).slice(-2);
 
 	iMin.focus();
 	iMin.select();
