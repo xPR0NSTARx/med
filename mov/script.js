@@ -5,6 +5,8 @@ var editId = "d";
 var nextId = 0;
 
 var addFunc = function(){
+  focFunc();
+  
   var title = titleInput.value;
   if(title == "")
     return;
@@ -50,10 +52,7 @@ var addFunc = function(){
   editInput.style.display = "none";
   
   editButton.onclick = function(){
-    if(editId != "d"){
-      var editDiv = document.querySelector("#" + editId);
-      okFunc(editDiv);
-    }
+    focFunc();
     
     editButton.style.display = "none";
     titleSpan.style.display = "none";
