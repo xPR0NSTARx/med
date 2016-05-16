@@ -1,12 +1,41 @@
-var titleInput = document.querySelector("input");
-titleInput.focus();
-
 var editId = "d";
 var nextId = 0;
+
+var okFunc = function(okDiv){
+  var editInput = okDiv.querySelector("#editInput");
+  var titleSpan = okDiv.querySelector("#titleSpan");
+  var editButton = okDiv.querySelector("#editButton");
+  var okButton = okDiv.querySelector("#okButton");
+  var delButton = okDiv.querySelector("#delButton");
+  
+  if(editInput.value == "")
+    editInput.value = titleSpan.textContent;
+  else
+    titleSpan.textContent = editInput.value;
+  
+  editButton.style.display = "inline";
+  titleSpan.style.display = "inline";
+  okButton.style.display = "none";
+  delButton.style.display = "none";
+  editInput.style.display = "none";
+  
+  var titleInput = document.querySelector("input");
+  titleInput.focus();
+  editId = "d";
+};
+
+var focFunc = function(){
+  if(editId != "d"){
+    var editDiv = document.querySelector("#" + editId);
+    okFunc(editDiv);
+    editId = "d";
+  }
+};
 
 var addFunc = function(){
   focFunc();
   
+  var titleInput = document.querySelector("input");
   var title = titleInput.value;
   if(title == "")
     return;
@@ -64,13 +93,6 @@ var addFunc = function(){
     editId = div.id;
   };
   
-  delButton.onclick = function(){
-    document.body.removeChild(div);
-    
-    titleInput.focus();
-    editId = "d";
-  };
-  
   okButton.onclick = function(){
     okFunc(div);
   };
@@ -79,6 +101,13 @@ var addFunc = function(){
     if(event.keyCode == 13)
       okFunc(div);
   };
+
+  delButton.onclick = function(){
+    document.body.removeChild(div);
+    
+    editId = "d";
+    titleInput.focus();
+  };
 };
 
 var addHelp = function(){
@@ -86,32 +115,5 @@ var addHelp = function(){
     addFunc();
 };
 
-var okFunc = function(okDiv){
-  var editInput = okDiv.querySelector("#editInput");
-  var titleSpan = okDiv.querySelector("#titleSpan");
-  var editButton = okDiv.querySelector("#editButton");
-  var okButton = okDiv.querySelector("#okButton");
-  var delButton = okDiv.querySelector("#delButton");
-  
-  if(editInput.value == "")
-    editInput.value = titleSpan.textContent;
-  else
-    titleSpan.textContent = editInput.value;
-  
-  editButton.style.display = "inline";
-  titleSpan.style.display = "inline";
-  okButton.style.display = "none";
-  delButton.style.display = "none";
-  editInput.style.display = "none";
-  
-  titleInput.focus();
-  editId = "d";
-};
-
-var focFunc = function(){
-  if(editId != "d"){
-    var editDiv = document.querySelector("#" + editId);
-    okFunc(editDiv);
-    editId = "d";
-  }
-};
+var titleInput = document.querySelector("input");
+titleInput.focus();
