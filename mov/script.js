@@ -82,6 +82,7 @@ var addFunc = function(){
   
   editButton.onclick = function(){
     focFunc();
+    titleInput.value = "";
     
     editButton.style.display = "none";
     titleSpan.style.display = "none";
