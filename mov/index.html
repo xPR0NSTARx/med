@@ -18,14 +18,21 @@
   
   <div>
     <input
+     id="titleInput"
      placeholder="Title"
      onkeypress="addHelp()"
-     onfocus="focFunc()">
+     onfocus="focFuncTitle()">
+    <input
+     id="linkInput"
+     placeholder="IMDb #"
+     onkeypress="addHelp()"
+     onfocus="focFuncLink()">
     <input
      class="button"
      type="image"
      src="img/add.png"
-     onclick="addFunc()">
+     onclick="addFunc()"
+     title="Add">
   </div>
   <hr>
   
