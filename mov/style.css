@@ -1,5 +1,6 @@
 #titleSpan{
   margin-left: 5px;
+  margin-right: 5px;
 }
 
 #editInput{
@@ -9,4 +10,8 @@
 .button{
   width: 12px;
   height: 12px;
+}
+
+#linkText{
+  font-size: 80%;
 }
